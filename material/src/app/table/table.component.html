@@ -1,0 +1,91 @@
+<div [ngClass]="{'centerDiv': itemsProducts === null , 'HidenDiv' : itemsProducts != null }" [ngStyle]="{'visibility': itemsProducts === null ? 'visible' :'hidden'}" class=" px-2 mx-auto d-flex justify-content-center ">
+
+  <div class="spinner-grow text-muted"></div>
+  <div class="spinner-grow text-primary"></div>
+  <div class="spinner-grow text-success"></div>
+  <div class="spinner-grow text-info"></div>
+  <div class="spinner-grow text-warning"></div>
+  <div class="spinner-grow text-danger"></div>
+  <div class="spinner-grow text-secondary"></div>
+  <div class="spinner-grow text-dark"></div>
+  <div class="spinner-grow text-light"></div>
+</div>
+<!--<button class="btn btn-primery" (click)="goToClick($event)">go to edit</button>-->
+
+<!--[ngClass]="{'centerDiv': itemsProducts === null , 'HidenDiv' : itemsProducts != null }"-->
+<!--[ngStyle]="{'visibility': itemsProducts === null ? 'hidden' :'visible'}"-->
+<div [ngStyle]="{'visibility': itemsProducts === null ? 'hidden' :'visible'}">
+  <!--<h3>prodoucts</h3>
+
+  <div class="cart-item" *ngFor="let item of items">
+    <span [ngClass]="{'warrning':item.type === 'Postal'}">{{ item.type }}</span>
+    <span>{{ item.price | currency }}</span>
+  </div>
+  <div class="cart-item" *ngFor="let item of itemsProducts">
+    <span>{{ item.Description }}</span>
+    <span>{{ item.Price | currency }}</span>
+  </div>
+  <button class="btn" (click)="btnTestGet()">click me to test json products</button>-->
+  <div class="container">
+    <div class="row">
+
+      <div class="input-group col-3">
+
+
+        <input type="text" class="form-control form-control-sm" name="sValue" [(ngModel)]="sValue" (input)="onFocs()" placeholder="Search .....">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div>
+
+          <button type="button" (click)="onSortByRating()">SORT BY RATING<i class="fa fa-sort" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      </div>
+
+      <div *ngIf="itemsProducts=== null || itemsProducts.length === 0 ;" class="  px-2 mx-auto d-flex justify-content-center ">
+
+        <h1 class="font-weight-bold font-italic">not found !!!</h1>
+      </div>
+
+      <table class="table table-dark container" style="margin-top:20px" [ngStyle]="{'visibility': itemsProducts=== null || itemsProducts.length === 0 ? 'hidden' :'visible'}">
+        <thead>
+          <tr>
+            <th scope="col" (click)="onSort($event,'ID')">
+              <i class="fa fa-sort" aria-hidden="true"></i>ID</th>
+            <th scope="col" (click)="onSort($event,'Description')"><i class="fa fa-sort" aria-hidden="true"></i>Description</th>
+            <th scope="col" (click)="onSort($event,'DiscontinuedDate')"><i class="fa fa-sort" aria-hidden="true"></i>DiscontinuedDate</th>
+
+            <th scope="col" (click)="onSort($event,'Name')"><i class="fa fa-sort" aria-hidden="true"></i>Name</th>
+            <th scope="col" (click)="onSort($event,'Price')"><i class="fa fa-sort" aria-hidden="true"></i>Price</th>
+            <th scope="col" (click)="onSort($event,'Rating')"><i class="fa fa-sort" aria-hidden="true"></i>Rating</th>
+            <th scope="col" (click)="onSort($event,'ReleaseDate')"><i class="fa fa-sort" aria-hidden="true"></i>ReleaseDate</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let item of itemsProducts " (click)="goToClick($event,item.ID)">
+            <th>{{item.ID}}</th>
+            <td>{{item.Description}}</td>
+            <td>{{item.DiscontinuedDate | date:'shortDate'}}</td>
+
+            <td>{{item.Name}}</td>
+            <td>{{item.Price | currency}}</td>
+            <td>{{item.Rating}}</td>
+            <td>{{item.ReleaseDate | date:'shortTime'}}</td>
+          </tr>
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+</div>

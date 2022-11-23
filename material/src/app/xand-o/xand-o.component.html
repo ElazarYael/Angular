@@ -1,0 +1,41 @@
+
+
+  <div class="container">
+    <button class="btn btn-info " (click)="onGoToHome()">GO TO HOME</button>
+    <button class="btn btn-info " (click)="onPlayAgin()">PLAY AGAIN</button>
+    <div class="d-flex justify-content-center align-items-center" [ngStyle]="{'visibility': sMsgWinner === 'none' ? 'hidden' : 'visible' }">
+
+      <div class="toast" data-autohide="false" >
+        <div class="toast-header">
+
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+        </div>
+        <div class="toast-body">
+          THE WINNER IS !!!!  {{sMsgWinner}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-4" *ngFor="let item of Plays">
+        <div class="card">
+
+
+
+          <button style="height:200px;" [ngStyle]="{'background-color': item.play === 'X'  ? 'palevioletred' :item.play === 'O' ? 'aqua' : 'chartreuse' }" [disabled]="item.disabled" (click)="onClickToChooes($event,item.index)">
+            <i [ngClass]="{ 'far fa-circle':item.play === 'O','fas fa-times':item.play === 'X'}" aria-hidden="true" style="font-size:50px"></i>
+
+          </button>
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
